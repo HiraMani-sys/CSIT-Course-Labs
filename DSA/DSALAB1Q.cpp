@@ -1,128 +1,111 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 #define MAX 10
 
-	
-	int main()
-	{
-		int a[MAX], count=-1, choice=0, temp=0, pos, i=0, element=0;
-		bool found=false;
-		cout <<"press the number for the following operation:" << endl;
-		cout << "press 1 for insert"<< endl;
-		cout << "press 2 for display" << endl;
-		cout << "press 3 for delete" << endl;
-		cout << "press 4 for update" << endl;
-		cout << "press 5 for searching" << endl;
-		cout << "press 6 for find max" << endl;
-		cout << "press 7 for find min" << endl;
-		
-		cout << "enter your choice:" ;
-		cin >> choice;
-		switch(choice)
-		{
-			case 1:
-				if (count == MAX-1){
-					cout << "Array is full " << endl;
-				}
-				else{
-					count=count;
-					cout << "enter the data of array " << (count+2) << ":";
-					cin >> a[count];
-					}
-			break;
-			
-			case 2:
-				if (count < 0){
-				cout << "Array is empty" << endl;
-				}	
-				else {
-					for (i=0;i<count;i++){
-						cout << "the value of array " << (i+1) << " :" << a[i];
-					}
-			}
-			break;
-			
-			case 3:
-				cout << "enter the position of an array to delete:" ;
-				cin >> pos;
-				temp = a[pos];
-				for (i=pos; i<MAX-1; i++)
-				{
-					a[i]=a[i+1];
-				}
-				cout << "the deleted data and its position is " << a[pos] << "and " << pos;
-			break;
-				
-			case 4:
-				cout << "Enter the position of array to update:" ;
-				cin >> pos;
-					if(pos<0||pos>=count)
-					{
-						cout << "Invalid Position." << endl;
-					}
-					else
-					{
-						cout << "enter new data: ";
-						cin >> temp;
-						a[pos]=temp;		
-					}	
-			break;
-			
-			case 5:
-				cout << "enter the element to search:";
-				cin >> element;
-				for (i=0 ; i<count; i++)
-				{
-					if (a[i]==element)
-					{
-						cout << "found in position " << i << "." << endl;
-					found=true;
-					}
-				}
-				if(found!=true)
-				{
-					cout << "element not found." << endl;
-				}
-			break;
-			
-			case 6:
-				if (count<0)
-				{
-					cout << "Array is empty." << endl;
-	
-				}
-				else {
-					int minVal=a[0];
-						for(i=0;i<count;i++){
-							if(a[i]<minVal)
-							{
-								minVal=a[i];
-							}
-						}
-					cout << "the minimum value in an array is " << minVal << "." << endl;
-				}
-			break;		
-			
-			case 7:
-				if (count<0)
-				{
-					cout << "Array is empty." << endl;
-	
-				}
-				else {
-					int maxVal=a[0];
-					for(i=0;i<count;i++){
-						if(a[i]<maxVal)
-						{
-							maxVal=a[i];
-						}
-					}
-					cout << "the maximum value in an array is " << maxVal << "." << endl;
-				}
-				
-			default:
-				cout << "Invalid choice. Try again" << endl;
-				
-		return 0;	
- 	}
- }
+int main() {
+    int a[MAX], count = -1, choice, temp, pos, i, element;
+    bool found;
+
+    cout << "Press the number for the following operation:\n";
+    cout << "1. Insert\n";
+    cout << "2. Display\n";
+    cout << "3. Delete\n";
+    cout << "4. Update\n";
+    cout << "5. Search\n";
+    cout << "6. Find Max\n";
+    cout << "7. Find Min\n";
+
+    cout << "Enter your choice: ";
+    cin >> choice;
+
+    switch (choice) {
+        case 1: // Insert
+            if (count == MAX - 1) {
+                cout << "Array is full.\n";
+            } else {
+                count++;
+                cout << "Enter the data for array " << (count + 1) << ": ";
+                cin >> a[count];
+            }
+            break;
+
+        case 2: // Display
+            if (count < 0) {
+                cout << "Array is empty.\n";
+            } else {
+                for (i = 0; i <= count; i++) {
+                    cout << "Value at position " << (i + 1) << ": " << a[i] << endl;
+                }
+            }
+            break;
+
+        case 3: // Delete
+            cout << "Enter the position to delete: ";
+            cin >> pos;
+            if (pos < 0 || pos > count) {
+                cout << "Invalid position.\n";
+            } else {
+                temp = a[pos];
+                for (i = pos; i < count; i++) {
+                    a[i] = a[i + 1];
+                }
+                count--;
+                cout << "Deleted element " << temp << " from position " << pos << ".\n";
+            }
+            break;
+
+        case 4: // Update
+            cout << "Enter the position to update: ";
+            cin >> pos;
+            if (pos < 0 || pos > count) {
+                cout << "Invalid position.\n";
+            } else {
+                cout << "Enter new data: ";
+                cin >> temp;
+                a[pos] = temp;
+            }
+            break;
+
+        case 5: // Search
+            cout << "Enter the element to search: ";
+            cin >> element;
+            found = false;
+            for (i = 0; i <= count; i++) {
+                if (a[i] == element) {
+                    cout << "Found at position " << i << ".\n";
+                    found = true;
+                }
+            }
+            if (!found) cout << "Element not found.\n";
+            break;
+
+        case 6: // Find Max
+            if (count < 0) {
+                cout << "Array is empty.\n";
+            } else {
+                int maxVal = a[0];
+                for (i = 1; i <= count; i++) {
+                    if (a[i] > maxVal) maxVal = a[i];
+                }
+                cout << "Maximum value is " << maxVal << ".\n";
+            }
+            break;
+
+        case 7: // Find Min
+            if (count < 0) {
+                cout << "Array is empty.\n";
+            } else {
+                int minVal = a[0];
+                for (i = 1; i <= count; i++) {
+                    if (a[i] < minVal) minVal = a[i];
+                }
+                cout << "Minimum value is " << minVal << ".\n";
+            }
+            break;
+
+        default:
+            cout << "Invalid choice. Try again.\n";
+    }
+
+    return 0;
+}
