@@ -33,11 +33,11 @@ int main()
 		if(fabs(f(c)<0.001)
 		{
 			break;
+		}	
+	if(f(a)*f(c)<0))
+		{
+			b=c;
 		}
-	}	if(f(a)*f(c)<0))
-				{
-		b=c;
-			}
 	else
 		{
 			a=c;
@@ -46,4 +46,5 @@ int main()
 	printf("approximate root after %d iteration=%.3f",iteration, c;
 	return 0;
 }
+
 
