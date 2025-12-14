@@ -24,13 +24,15 @@ public:
 
     void push(char x) {
         if (isfull()) {
+        	        cout << "Stack overflow! Cannot push " << x << endl;
         } else {
             arr[++top] = x;
         }
     }
 
     char pop() {
-        if (isempty()) {
+        if (isempty()) {        
+		cout << "Stack underflow! Cannot pop." << endl;
             return '\0'; 
         } else {
             return arr[top--];
@@ -102,22 +104,11 @@ for (size_t i = 0; i < infix.length(); ++i) {
 }
 
 int main() {
-    string test1 = "a*b+c/d";
-    string test2 = "a+b^c^d-e";
-    string test3 = "(a+b)*c^d";
-
+    string n;
     cout << "--- Infix to Postfix Conversion ---" << endl;
-    cout << "Test 1 (Infix): " << test1 << endl;
-    cout << "Postfix: " << infixToPostfix(test1) << " (Expected: ab*cd/+) " << endl;
-    
-    cout << "-----------------------------------" << endl;
-    cout << "Test 2 (Infix): " << test2 << endl;
-    cout << "Postfix: " << infixToPostfix(test2) << " (Expected: abc^d^-e) " << endl;
-    
-    cout << "-----------------------------------" << endl;
-    cout << "Test 3 (Infix): " << test3 << endl;
-    cout << "Postfix: " << infixToPostfix(test3) << " (Expected: ab+c d^) " << endl;
-    cout << "-----------------------------------" << endl;
-    
+	cout << "Hira Mani -Enter Infix Expression:";
+	cin >> n;
+    cout << "Infix Expression: " << n << endl;
+    cout << "Postfix: " << infixToPostfix(n) << endl;
     return 0;
 }
